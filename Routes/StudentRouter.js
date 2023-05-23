@@ -19,6 +19,7 @@ route.get("/", async (req, res) => {
 route.get("/:id", async (req, res) => {
   try {
     const student = await studentModel.findById(req.params.id);
+
     if (!student) {
       res.send(sendResponse(false, null, "No student found")).status(404);
     } else {
@@ -46,6 +47,9 @@ route.post("/", async (req, res) => {
     if (!password) {
       errArr.push("Required: password");
     }
+    if (!email) {
+      errArr.push("Required: email");
+    }
     if (errArr.length > 0) {
       res
         .send(sendResponse(false, errArr, null, "Required All Fields"))
@@ -56,6 +60,8 @@ route.post("/", async (req, res) => {
         lastName,
         contact,
         course,
+        password,
+        eamil,
       });
       const savedStudent = await student.save();
       res.send(sendResponse(true, savedStudent, "Saved Successfully")).status(200);

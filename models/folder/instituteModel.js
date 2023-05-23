@@ -19,6 +19,6 @@ const InstituteSchema = new mongoose.Schema({
 
 })
 
-const instituteModel = mongoose.model('student',InstituteSchema)
+const instituteModel = mongoose.model('institute',InstituteSchema)
 
 module.exports = instituteModel

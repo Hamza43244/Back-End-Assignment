@@ -1,11 +1,17 @@
 const express = require('express');
 const app = express();
-const studentsRouter = require('./Routes/StudentRouter');
+const studentRouter = require('./Routes/StudentRouter');
+const teacherRouter = require('./Routes/TeacherRouter');
+const instituteRouter = require('./Routes/InstituteRouter');
+const courseRouter = require('./Routes/CourseRouter');
 const mongoose = require('mongoose');
 require('dotenv').config();
 app.use(express.json())
 
-app.use('/api/student',studentsRouter)
+app.use('/api/student',studentRouter)
+app.use('/api/teacher',teacherRouter)
+app.use('/api/institute',instituteRouter)
+app.use('/api/course',courseRouter)
 
 // app.get('/',(req, res)=>{
 //     res.send("Server Chal raha hai")
